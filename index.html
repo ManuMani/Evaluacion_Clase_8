@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Beach Volleyball Olympics</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Cabin:700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/grayscale.min.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+      
+       
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Inicio</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#about">Vóleibol Playa?</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#download">Olimpiadas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact">Cuándo jugar</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Intro Header -->
+    <header class="masthead">
+      <div class="intro-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <h1 class="brand-heading">Beach Volleyball</h1>
+              <p class="intro-text"><strong>"Nos encanta comer arena"</strong>
+                </p>
+              <a href="#about" class="btn btn-circle js-scroll-trigger">
+                <i class="fa fa-angle-double-down animated"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+      
+
+    <!-- About Section -->
+    <section id="about" class="content-section text-left">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+              
+              
+            <h2>Cuál es la diferencia</h2>
+                    <div class="col-md-6 col-lg-6">
+                        
+
+            <p>El Voley playa o voleibol playero es una variante del voleibol que se juega sobre arena, generalmente en la playa, aunque son muy populares los torneos en localidades del interior con campos artificiales. Es una disciplina olímpica desde los Juegos Olímpicos de Atlanta 1996. Las diferencias con el voleibol de pista, aparte de la superficie de juego, y de que se practique al aire libre, es el número de componentes del equipo.<br><br> El reglamento que se aplica en competiciones oficiales que establece equipos de dos jugadores sin opción a ningún cambio, pero su gran popularidad hace que el Voleibol de playa se juegue de manera informal en cualquier parte. Es muy habitual en los torneos populares establecer equipos de cuatro jugadores.
+            </p>
+         
+             
+          </div>
+        </div>
+      </div>
+          
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="download-section content-section text-center">
+        <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3>Olimpiadas</h3>
+                <p>Desde 1996 hasta la actualidad, podemos dimensionar qué países han ganado más medallas en esta disciplina en damas y varones.</p>
+               <div id="here" class="my-4"></div>
+            </div>
+            <div class="col-12">
+            </div>
+        </div>
+    </div>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script>
+    //variables globales
+    var w = 980, h = 600, f =7;
+    //datos
+    var data = [
+      {name: 'Estados Unidos', population: 10, bg: "#00BFFF"},
+      {name: 'Brasil', population: 13, bg: "#0080FF"},
+      {name: 'Alemania', population: 3, bg: "#58D3F7"},
+      {name: 'España', population:1, bg: "#81BEF7"}
+    ]    
+    console.log(data);
+    //crea el svg dentro del elemento de identidad "here"
+    var svg = d3.select("#here")
+    .append("svg")
+      .attr("width", w)
+      .attr("height", h)
+      .style("background","#6E6E6E");
+    //selecciona el grupo
+    var g = svg.selectAll("g")
+      .data(data)
+      .enter()
+      .append("g")  
+    //dentro del grupo, crea círculos para la data
+    g.append("circle")
+      .attr("cx", function(d, i) { return (i+1) * w/(data.length+1); })
+      .attr("cy", function(d) { return h/2; })
+      .attr("r", function(d) { return d.population*f; })
+      .attr("fill",function(d) { return d.bg; })
+    //dentro del mismo grupo, agregar texto para la data
+    g.append("text")
+      .attr("x", function(d, i) { return (i+1) * w/(data.length+1); })
+      .attr("y", function(d, i) { return (h/1.75)+d.population*f; })
+      .attr("fill","#fff")
+      .attr('text-anchor','middle')
+      .text(function(d) { return d.name; })
+    //dentro del mismo grupo, agrega otro texto para la data
+    g.append("text")
+      .attr("x", function(d, i) { return (i+1) * w/(data.length+1); })
+      .attr("y", function(d, i) { return (h/1.6)+d.population*f; })
+      .attr("fill","#000")
+      .attr('text-anchor','middle')      
+      .text(function(d) { return "("+d.population+")"; })
+      .style("font-size","10px")
+    </script>
+          <p>Además puedes revisar el ranking de duplas actualizado</p>
+          <a href="http://www.fivb.org/EN/BeachVolleyball/WRanking_m.asp" class="btn btn-default btn-lg">Ranking Mundial de Duplas</a>
+        </div>
+      </div>
+      </section>
+    
+    <!-- Contact Section -->
+    <section id="contact"  background-color="black" class="contact-section text-center" >
+        
+              
+             <div class="container pt-5">
+<div class="row justify-content-center">
+		<div class="col">
+		</div>
+	</div>
+</div>
+
+           
+        <h2>En qué momento deberías ir a jugar Volei Playa</h2>
+        <a class="boton_personalizado" onclick="document.getElementById('js').innerHTML = Date()" >Siempre es un buen momento</a>
+    <!--Esto es un BOTON -->
+<p>                              <br>          </p>
+<p id="js"></p>
+            <p>Puedes seguir los torneos internacionales de la
+              <a href="https://beachmajorseries.com/">Beach Major Series</a>
+              y ver por streaming todos los partidos!</p>
+            <ul class="list-inline banner-social-buttons">
+              <li class="list-inline-item">
+                <a href="https://twitter.com/BeachMajors" class="btn btn-default btn-lg">
+                  <i class="fa fa-twitter fa-fw"></i>
+                  <span class="network-name">Twitter</span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://github.com/ManuMani" class="btn btn-default btn-lg">
+                  <i class="fa fa-github fa-fw"></i>
+                  <span class="network-name">ManuMani</span>
+                </a>
+              </li>
+            
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map Section -->
+<section id="final" class=" final-section text-center">
+  <div class="container" >
+    <div class="final-section-heading">
+      <h2 class="mb-5">Los Países con más Medallas</h2>
+    </div>
+    <div id="este"></div>
+
+    <div class="row" >
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
+        <script>
+
+            function setup() {
+              var canvas = createCanvas(960,230);
+              canvas.parent('este');
+              textAlign(CENTER);
+              textFont("Arial");
+        }
+
+        function draw(){
+
+          background('#000');
+
+          fill ("#DBA901");
+          noStroke();
+          ellipse(80,100,160,160);
+          ellipse(346.667,100,160,160);
+          ellipse(613.333,100,160,160);
+          ellipse(880,100,160,160);
+
+           fill ("#886A08");
+          ellipse(80,100,140,140);
+          ellipse(346.667,100,140,140);
+          ellipse(613.333,100,140,140);
+          ellipse(880,100,140,140);
+            
+            fill ("#DBA901");
+          noStroke();
+          ellipse(80,100,120,120);
+          ellipse(346.667,100,120,120);
+          ellipse(613.333,100,120,120);
+          ellipse(880,100,120,120);
+
+
+          if (mouseX>23 && mouseX<137 && mouseY>43 && mouseY<156){
+            fill ("#FF0000");
+            ellipse(80,100,160,160);
+              fill("#fff")
+             ellipse(80,100,140,140);
+              fill("#0101DF")
+              ellipse(80,100,120,120);
+                fill("#fff");
+              textSize(20);
+              text("X",80,100);
+              
+            fill ("#fff");
+            textSize(20);
+            text("Estados Unidos", 80, 220);
+          }
+
+          if (mouseX>290 && mouseX<403 && mouseY>43 && mouseY<156){
+            fill ("#04B431");
+             ellipse(346.667,100,140,140);
+                fill("#fff");
+              textSize(20);
+              text("XIII",346.667,100);
+              fill ("#fff");
+            textSize(20);
+            text("Brasil", 346, 220);
+          }
+
+          if (mouseX>557 && mouseX<670 && mouseY>43 && mouseY<156){
+            fill ("#000");
+              ellipse(613.333,100,160,160);
+              fill ("#DF3A01");
+             ellipse(613.333,100,110,110);
+            fill ("#FACC2E");
+              ellipse(613.333,100,60,60);
+                fill("#fff");
+              textSize(20);
+              text("III",613.333,100);
+              fill("#fff");
+            textSize(20);
+            text("Alemania", 613, 220);
+          }
+
+          if (mouseX>824 && mouseX<937 && mouseY>43 && mouseY<156){
+            fill ("#f7144b");
+            ellipse(880,100,160,160);
+              fill ("#FACC2E");
+            ellipse(880,100,110,110);
+              fill ("#f7144b");
+            ellipse(880,100,60,60);
+              fill("#fff");
+              textSize(20);
+              text("I",880,100);
+              
+              
+            fill ("#fff");
+            textSize(20);
+            text("España", 880, 220);
+          }
+
+        }
+</script>
+    <!-- Footer -->
+    <footer>
+      <div class="container text-center">
+        <p>Manuela Carreño &copy; Diseño y Nuevos Medios 2018</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
+
+    <!-- Custom scripts for this template -->
+<script src="js/grayscale.js"></script>
+
+  </body>
+
+</html>
